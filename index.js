@@ -37,6 +37,23 @@ function statusChangeCallback(response) {
           'into Facebook.';
     }
 }
+
+//取得用戶資料
+function GetProfile() {
+
+    //FB.api()使用說明：https://developers.facebook.com/docs/javascript/reference/FB.api
+    //取得用戶個資
+    FB.api("/me", "GET", { fields: 'last_name,first_name,name,email' }, function (user) {
+        //user物件的欄位：https://developers.facebook.com/docs/graph-api/reference/user
+        if (user.error) {
+            console.log(response);
+        } else {
+            
+            console.log(JSON.stringify(user));
+        }
+    });
+
+}
 function checkLoginState() {
     FB.getLoginStatus(function (response) {
         statusChangeCallback(response);
