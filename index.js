@@ -28,7 +28,7 @@ function statusChangeCallback(response) {
     console.log(response);
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
-        testAPI();
+        GetProfile();
     } else if (response.status === 'not_authorized') {
         document.getElementById('status').innerHTML = 'Please log ' +
           'into this app.';
@@ -43,7 +43,7 @@ function GetProfile() {
 
     //FB.api()使用說明：https://developers.facebook.com/docs/javascript/reference/FB.api
     //取得用戶個資
-    FB.api("/me", "GET", { fields: 'last_name,first_name,name,email' }, function (user) {
+    FB.api("/me", "GET", { fields: 'last_name,first_name,name,email,picture' }, function (user) {
         //user物件的欄位：https://developers.facebook.com/docs/graph-api/reference/user
         if (user.error) {
             console.log(response);
